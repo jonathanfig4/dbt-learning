@@ -11,3 +11,26 @@ models:
           - not_null
       - name: first_order_date
         description: NULL when a customer has not yet placed an order.
+      - name: total_amount
+        description: Total lifetime value of customer payments
+        
+  - name: fct_orders
+    description: One record per payment with order and customer details
+    columns:
+      - name: payment_id
+        description: Primary key for payments
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: Foreign key to orders
+        tests:
+          - not_null
+      - name: customer_id
+        description: Foreign key to customers
+        tests:
+          - not_null
+      - name: amount
+        description: Payment amount
+        tests:
+          - not_null
