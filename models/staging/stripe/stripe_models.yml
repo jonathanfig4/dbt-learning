@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: stg_stripe__payments
+    description: Contains the payment id which can be duped, order id (relationship to stg orders source), payment method, status, and amount. 
+    columns:
+      - name: payment_id
+        description: primary key
+        tests:
+          - unique
+          - not_null
+      - name: status
+        description: transaction status 
+        tests:
+            - accepted_values:
+                values: ['success', 'fail']
+          
